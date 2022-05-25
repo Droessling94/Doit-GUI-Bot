@@ -1,3 +1,4 @@
+
 const robot = require('robotjs');
 const getRandomInt = require('./getRandomInt')
 

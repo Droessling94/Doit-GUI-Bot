@@ -1,3 +1,4 @@
+
 const robot = require('robotjs');
 const doubleCheckColor = require('./doubleCheckColor');
 const getRandomInt = require('./getRandomInt')
@@ -14,7 +15,7 @@ module.exports =  function searchArea(x, y, height, width, colorarray) { //x and
         let foundPixel = doubleCheckColor(chosenColor,colorarray,randomX,randomY);
         if(foundPixel == true){
             // console.log("found a pixel that passed the doubleCheck, Nice!");
-            return {randomX, randomY};
+            return {randomX, randomY, chosenColor};
         }
         // console.log(foundPixel); 
     }
@@ -25,6 +26,3 @@ module.exports =  function searchArea(x, y, height, width, colorarray) { //x and
     // console.log(img);
 
 }
-
-//760 - 1260 x and width of first set of trees
-//270 - 770 y and height of first set of trees

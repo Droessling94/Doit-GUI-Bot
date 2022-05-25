@@ -4,6 +4,7 @@ const dropAllItems = require('./utils/dropAllItems');
 const northFace = require('./utils/northFace')
 const yewColorArray = ["271D0E", "322611", "362913", "392C14", "483719", "403117", "5B4621", "685025", "715729", "74592A", "785B2B", "7B5E2B"];
 const searchArea = require('./utils/searchArea');
+const resourceMonitor = require('./utils/resourceMonitor');
 function sleepBasic(ms) {
     Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
 };
@@ -17,11 +18,15 @@ function main() {
     sleepBasic(500);
     console.log("Finding Indicated Resource");
     sleep(500);
-    var foundPixel = searchArea(0, 0, 1700, 1055, yewColorArray)
+    var foundPixel = searchArea(0, 0, 1750, 950, yewColorArray)
     console.log(foundPixel);
     robot.moveMouseSmooth(foundPixel.randomX, foundPixel.randomY, 1)
     robot.mouseClick("left")
+    sleep(1000)
     console.log("Chopping....");
+    sleepBasic(5000)
+    resourceMonitor(foundPixel.chosenColor,yewColorArray);
+    console.log("Find a new Tree....");
     console.log("Main Ended.");
 }
 
